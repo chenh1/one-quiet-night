@@ -1,10 +1,8 @@
 define(['react', 'jsx!game/test2'], function(React, MainSheet) {
-    MainSheet = React.createElement(MainSheet);
-
     var GameBoardInitialize = React.createClass({
-        //getInitialState: function(){
-
-        //},
+        getInitialState: function(){
+            return {data:[]};
+        },
 
         componentDidMount: function(){
             this.accesstest();
@@ -20,6 +18,9 @@ define(['react', 'jsx!game/test2'], function(React, MainSheet) {
                 cache: false,
                 success: function(data){
                     console.log(data);
+                    this.setState({
+                        data:[data]
+                    });
                 }.bind(this),
                 error: function(){
                     console.log("No mas");
@@ -31,7 +32,8 @@ define(['react', 'jsx!game/test2'], function(React, MainSheet) {
             return(
                 <div className = "game-board">
                     hello
-                    {MainSheet}
+                    <MainSheet 
+                        data={this.state.data} />
                 </div>
             );
         }
