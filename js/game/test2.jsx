@@ -1,4 +1,9 @@
-define(['react'], function(React) {
+//DELETE THIS FILE ONCE SET UP
+
+define(['react', 'game/test3'], function(React, x) {
+
+    x = x;
+
     var MainSheet = React.createClass({
         render: function(){
             /** @type {Array} yearNodes Renders YearSheet and passes down year and months to YearSheet */
@@ -6,6 +11,7 @@ define(['react'], function(React) {
                 return (
                     <div>
                         {data}
+                        {x}
                     </div>
                 );
             });
