@@ -1,46 +1,50 @@
-define(['react', 'jsx!game/test2'], function(React, MainSheet) {
+define(['react',
+    'jsx!game/boardComponents/worldMap',
+    'jsx!game/boardComponents/outbreaks',
+    'jsx!game/boardComponents/cures',
+    'jsx!game/boardComponents/playerDeck',
+    'jsx!game/boardComponents/infections'],
+    function(React, WorldMap, Outbreaks, Cures, PlayerDeck, Infections) {
+
     var GameBoardInitialize = React.createClass({
         getInitialState: function(){
             return {data:[]};
         },
 
         componentDidMount: function(){
-            this.accesstest();
-            setInterval(this.accesstest, this.props.pollInterval);
+            this.dataDump();
+            setInterval(this.dataDump, this.props.pollInterval);
         },
 
-        accesstest: function(){
-            var x = 1;
-            var datum = [
-                {id: 1, name: "yes"},
-                {id: 2, name: "no"}
-            ];
-            this.setState({
-                data:datum
-            });
-            console.log(this.state.data);
-            /*
+        dataDump: function(){
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
                 type: 'get',
                 cache: false,
                 success: function(data){
-                    console.log(data);
+                    this.setState({
+                        data:data
+                    });
+
+                    //Prepare all of the objects' structures to pass as props down the line
+                    console.log(this.state.data);
                 }.bind(this),
                 error: function(){
                     console.log("No mas");
                 }.bind(this)
             });
-*/
+
         },
 
         render: function(){
             return(
                 <div className = "game-board">
-                    hello
-                    <MainSheet
-                        data={this.state.data} />
+                    <WorldMap />
+                    <Outbreaks />
+                    <Cures />
+                    <PlayerDeck />
+                    <Infections />
                 </div>
             );
         }
