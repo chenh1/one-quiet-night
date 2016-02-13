@@ -3,6 +3,7 @@ require.config({
 
     paths: {
         "react": "react",
+        "reactDOM": "reactDOM",
         "JSXTransformer": "JSXTransformer"
     },
 
@@ -13,10 +14,10 @@ require.config({
     }
 });
 
-require(['react', 'jsx!game/gameBoard'], function(React, GameBoard){
+require(['react', 'reactDOM', 'jsx!game/gameBoard'], function(React, ReactDOM, GameBoard){
     GameBoard = React.createElement(GameBoard);
 
-    React.render(
+    ReactDOM.render(
         GameBoard,
         document.getElementById("gameArea")
     );

@@ -11,6 +11,15 @@ define(['react', 'jsx!game/test2'], function(React, MainSheet) {
 
         accesstest: function(){
             var x = 1;
+            var datum = [
+                {id: 1, name: "yes"},
+                {id: 2, name: "no"}
+            ];
+            this.setState({
+                data:datum
+            });
+            console.log(this.state.data);
+            /*
             $.ajax({
                 url: this.props.url,
                 dataType: 'json',
@@ -18,21 +27,19 @@ define(['react', 'jsx!game/test2'], function(React, MainSheet) {
                 cache: false,
                 success: function(data){
                     console.log(data);
-                    this.setState({
-                        data:[data]
-                    });
                 }.bind(this),
                 error: function(){
                     console.log("No mas");
                 }.bind(this)
             });
+*/
         },
 
         render: function(){
             return(
                 <div className = "game-board">
                     hello
-                    <MainSheet 
+                    <MainSheet
                         data={this.state.data} />
                 </div>
             );
@@ -45,7 +52,7 @@ define(['react', 'jsx!game/test2'], function(React, MainSheet) {
                 <GameBoardInitialize
                     url="php/test.php"
                     pollInterval={2000}
-                    pollTimeout={400}/>
+                    pollTimeout={1200}/>
             )
         }
     })
