@@ -1,19 +1,25 @@
 define(['react',
+    'jsx!game/loginForm',
     'jsx!game/boardComponents/worldMap',
     'jsx!game/boardComponents/outbreaks',
     'jsx!game/boardComponents/cures',
     'jsx!game/boardComponents/playerDeck',
     'jsx!game/boardComponents/infections'],
-    function(React, WorldMap, Outbreaks, Cures, PlayerDeck, Infections) {
+    function(React, WorldMap, Outbreaks, Cures, PlayerDeck, Infections, LoginForm) {
 
     var GameBoardInitialize = React.createClass({
+
+        sessionStarted: false,
+
         getInitialState: function(){
             return {data:[]};
         },
 
         componentDidMount: function(){
-            this.dataDump();
-            setInterval(this.dataDump, this.props.pollInterval);
+            if(this.sessionStarted){
+                this.dataDump();
+                setInterval(this.dataDump, this.props.pollInterval);
+            }
         },
 
         dataDump: function(){
@@ -45,8 +51,9 @@ define(['react',
                     <Cures />
                     <PlayerDeck />
                     <Infections />
+                    <LoginForm />
                 </div>
-            );
+            )
         }
     });
 
@@ -54,7 +61,7 @@ define(['react',
         render: function(){
             return(
                 <GameBoardInitialize
-                    url="php/test.php"
+                    url="php/sessionsData.php"
                     pollInterval={2000}
                     pollTimeout={1200}/>
             )

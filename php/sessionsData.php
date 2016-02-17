@@ -1,5 +1,7 @@
 <?php
 
+//This page will load SESSIONS related tables. Static tables may be accessed by sessions tables.
+
 //session_start();
 
 require("mysql_connect.php");

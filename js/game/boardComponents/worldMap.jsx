@@ -2,7 +2,7 @@ define(['react'], function(React) {
 
     var WorldMap = React.createClass({
         render: function(){
-            return (
+            return(
                 <div className = "world-map" />
             )
         }
