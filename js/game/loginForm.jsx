@@ -5,16 +5,21 @@ define(['react'], function(React) {
         render: function(){
             //ADD display:none; to .invite-form
             return(
-                <div className = "form-containers">
-                    <form className = "login-form">
+                <div className="form-containers">
+                    <form className="login-form">
                         <button id="newGame">New</button>
-                        <button>Continue</button>
+                        <button id="continueGame">Continue</button>
                     </form>
 
-                    <form className = "invite-form">
+                    <form className="invite-form">
                         <button id="addInvitePlayerInput">+</button>
                         <input className="invite-player-input" placeholder="Invite Player" />
                         <button id="executeInvite">Invite Players</button>
+                    </form>
+
+                    <form className="continue-form">
+                        <input id="gameSession" placeholder="Enter Session ID">
+                        <button id="enterGame">Enter</button>
                     </form>
                 </div>
             )
