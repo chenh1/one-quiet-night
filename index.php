@@ -16,8 +16,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
-    <script type="text/javascript" data-main="js/app.js" src="js/require.js"></script>
 
 </head>
 
@@ -25,6 +25,8 @@
 
 <div id="gameArea">
 </div>
+
+<script src="lib/main.js"></script>
 
 </body>
 

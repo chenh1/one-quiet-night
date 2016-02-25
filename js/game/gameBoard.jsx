@@ -1,3 +1,16 @@
+var React = require('react');
+
+module.exports = React.createClass({
+    render: function() {
+        return (
+            <div className = "game-board">
+            </div>
+        )
+    }
+});
+
+
+/*
 define(['react',
     'jsx!game/loginForm',
     'jsx!game/boardComponents/worldMap',
@@ -5,7 +18,7 @@ define(['react',
     'jsx!game/boardComponents/cures',
     'jsx!game/boardComponents/playerDeck',
     'jsx!game/boardComponents/infections'],
-    function(React, WorldMap, Outbreaks, Cures, PlayerDeck, Infections, LoginForm) {
+    function(React, WorldMap, Outbreaks, Cures, PlayerDeck, Infections) {
 
     var GameBoardInitialize = React.createClass({
 
@@ -44,14 +57,17 @@ define(['react',
         },
 
         render: function(){
+                        console.log(this.props);
+                        console.log(this.sessionStarted);
+
             return(
-                <div className = "game-board">
+                <div className="game-board">
                     <WorldMap />
                     <Outbreaks />
                     <Cures />
                     <PlayerDeck />
                     <Infections />
-                    <LoginForm />
+                    <LoginForm sessionStarted={this.sessionStarted}/>
                 </div>
             )
         }
@@ -71,3 +87,5 @@ define(['react',
     return GameBoard;
 
 });
+
+*/
