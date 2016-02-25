@@ -14,6 +14,19 @@ require.config({
     }
 });
 
+//Test here
+var React = require('react');
+var ReactDOM = require('reactDOM');
+var GameBoard = require('jsx!game/gameBoard');
+
+GameBoard = React.createElement(GameBoard);
+
+ReactDOM.render(
+    GameBoard,
+    document.getElementById("gameArea")
+);
+
+/*
 require(['react', 'reactDOM', 'jsx!game/gameBoard'], function(React, ReactDOM, GameBoard){
     GameBoard = React.createElement(GameBoard);
 
@@ -22,7 +35,7 @@ require(['react', 'reactDOM', 'jsx!game/gameBoard'], function(React, ReactDOM, G
         document.getElementById("gameArea")
     );
 });
-
+*/
 
 
 
