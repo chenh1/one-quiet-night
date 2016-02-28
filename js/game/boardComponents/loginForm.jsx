@@ -1,4 +1,4 @@
-define(['react'], function(React) {
+var React = require('react');
 
     var LoginForm = React.createClass({
 
@@ -38,7 +38,6 @@ define(['react'], function(React) {
         },
 
         render: function(){
-            console.log(this);
             //ADD display:none; to .invite-form
             return(
                 <div className="form-containers">
@@ -62,6 +61,4 @@ define(['react'], function(React) {
         }
     });
 
-    return LoginForm;
-
-});
+    module.exports = LoginForm;

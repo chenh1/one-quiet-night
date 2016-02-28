@@ -1,12 +1,11 @@
-define(['react'], function(React) {
+var React = require('react');
 
-    var Infections = React.createClass({
-        render: function(){
-            return (
-                <div className = "infections"></div>
-            )
-        }
-    })
-
-    return Infections;
+var Infections = React.createClass({
+    render: function() {
+        return (
+            <div className='infections' />
+        )
+    }
 });
+
+module.exports = Infections;

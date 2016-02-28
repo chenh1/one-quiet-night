@@ -1,0 +1,26 @@
+{
+  "name": "one-quiet-night",
+  "version": "0.0.1",
+  "description": "Epidemic",
+  "main": "lib/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "build": "webpack --progress",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chenh1/one-quiet-night.git"
+  },
+  "author": "chenh1",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.8.23",
+    "babel-loader": "^5.3.2",
+    "webpack": "^1.12.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3"
+  }
+}

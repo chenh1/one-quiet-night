@@ -1,12 +1,11 @@
-define(['react'], function(React) {
+var React = require('react');
 
-    var WorldMap = React.createClass({
-        render: function(){
-            return(
-                <div className = "world-map" />
-            )
-        }
-    })
-
-    return WorldMap;
+var WorldMap = React.createClass({
+    render: function() {
+        return (
+            <div className='world-map' />
+        )
+    }
 });
+
+module.exports = WorldMap;
