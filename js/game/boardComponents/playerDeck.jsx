@@ -1,12 +1,11 @@
-define(['react'], function(React) {
+var React = require('react');
 
-    var PlayerDeck = React.createClass({
-        render: function(){
-            return (
-                <div className = "player-deck" />
-            )
-        }
-    })
-
-    return PlayerDeck;
+var PlayerDeck = React.createClass({
+    render: function() {
+        return (
+            <div className='player-deck' />
+        )
+    }
 });
+
+module.exports = PlayerDeck;
