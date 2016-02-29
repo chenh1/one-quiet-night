@@ -38,6 +38,7 @@ var React = require('react');
         },
 
         render: function(){
+            console.log(this.props);
             //ADD display:none; to .invite-form
             return(
                 <div className="form-containers">

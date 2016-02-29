@@ -68,9 +68,3 @@ var GameBoard = React.createClass({
 });
 
 module.exports = GameBoard;
-
-/*
-                url = ""
-                pollInterval={}
-                pollTimeout={}
-*/
