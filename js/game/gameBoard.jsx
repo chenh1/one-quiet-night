@@ -15,15 +15,15 @@ var GameBoardInitialize = React.createClass({
     },
 
     componentDidMount: function(){
-        //if(this.sessionStarted){
+        if(this.sessionStarted){
             this.dataDump();
             setInterval(this.dataDump, this.props.pollInterval);
-        //}
+        }
     },
 
     dataDump: function(){
         $.ajax({
-            url: '/gameBoard',
+            url: '/test',
             dataType: 'text',
             type: 'get',
             cache: false,
