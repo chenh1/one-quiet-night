@@ -82,7 +82,7 @@ router.route('/')
                         //Start infection cards session
                         for (var i = 0, infection_cards_length = infection_cards.length; i < infection_cards_length; i++) {
                             connection.query('INSERT INTO `infection_cards_session` (infection_id, deck_order, session_id) VALUES ("'+
-                                infection_cards[i].id'", "'+i+'", "'+session_id+'")', function(err, results) {
+                                infection_cards[i].id+'", "'+i+'", "'+session_id+'")', function(err, results) {
                                     if(err) throw err
 
                                     console.log(results);

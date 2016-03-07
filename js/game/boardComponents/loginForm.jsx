@@ -1,82 +1,86 @@
 var React = require('react');
 
-    var LoginForm = React.createClass({
+var LoginForm = React.createClass({
+    login: function(e) {
+        e.preventDefault();
 
-        newGame: function(e){
-            e.preventDefault();
+        var loginInfo = {
+            'usernameOrEmail': $("#usernameLogin").val(),
+            'password': $("#passwordLogin").val()
+        };
 
-            $(".invite-form").toggle();
-        },
+        var changeSessionState = this.props.changeSessionState;
 
-        continueGame: function(e){
-            e.preventDefault();
-
-            $(".continue-form").toggle();
-        },
-
-        addInvitePlayerInput: function(e){
-            e.preventDefault();
-
-            if($(".invite-player-input").length < 4) {
-                var invitePlayerInput = $("<input>", {
-                    class:"invite-player-input",
-                    placeholder:"Invite Player"
-                });
-
-                $("#startGame").before(invitePlayerInput);
+        $.ajax({
+            url: '/login',
+            dataType: 'text',
+            data: loginInfo,
+            type: 'post',
+            cache: false,
+            success: function(data){
+                if(data == '"granted"') {
+                    console.log(changeSessionState);
+                    changeSessionState();
+                }
+            },
+            error: function(){
+                console.log("No mas!");
             }
-        },
+        });
+    },
 
-        startGame: function(e){
-            e.preventDefault();
+    register: function(e) {
+        e.preventDefault();
 
-            var newGameName = {'data': $("#newGameName").val()};
+        var registerInfo = {
+            'username': $("#usernameRegister").val(),
+            'email': $("#emailRegister").val(),
+            'password': $("#passwordRegister").val()
+        };
 
-            $.ajax({
-                url: '/setSession',
-                dataType: 'text',
-                data: newGameName,
-                type: 'post',
-                cache: false,
-                success: function(data){
-                    console.log(data);
-                }.bind(this),
-                error: function(){
-                    console.log("No mas");
-                }.bind(this)
-            });
-        },
+        $.ajax({
+            url: '/register',
+            dataType: 'text',
+            data: registerInfo,
+            type: 'post',
+            cache: false,
+            success: function(data){
+                console.log(data);
+            },
+            error: function(){
+                console.log("No mas!");
+            }
+        });
+    },
 
-        enterGame: function(e){
-            e.preventDefault();
+    sendReset: function(e) {
+        e.preventDefault();
+    },
 
-            console.log(this);
-        },
+    render: function() {
+        return (
+            <div className="login-register-container">
+                <form id="loginForm">
+                    <input id="usernameLogin" placeholder="Enter username or email" />
+                    <input id="passwordLogin" placeholder="Enter password" />
+                    <button id="forgotPassword">Forgot Password?</button>
+                    <button id="login" onClick={this.login}>Login</button>
+                </form>
 
-        render: function(){
-            console.log("This is loginform's props", this.props);
-            //ADD display:none; to .invite-form
-            return(
-                <div className="form-containers">
-                    <form className="login-form">
-                        <button id="newGame" onClick={this.newGame}>New</button>
-                        <button id="continueGame" onClick={this.continueGame}>Continue</button>
-                    </form>
+                <form id="forgotLogin">
+                    <input id="sendEmailReset" placeholder="Enter email" />
+                    <button id="sendReset" onClick={this.sendReset}>Send Email</button>
+                </form>
 
-                    <form className="invite-form">
-                        <button id="addInvitePlayerInput" onClick={this.addInvitePlayerInput}>+</button>
-                        <input className="invite-player-input" placeholder="Invite Player" />
-                        <input id="newGameName" placeholder="Enter Game Name" />
-                        <button id="startGame" onClick={this.startGame}>Start Game</button>
-                    </form>
+                <form id="registerForm">
+                    <input id="usernameRegister" placeholder="Enter username" />
+                    <input id="emailRegister" placeholder="Enter email" />
+                    <input id="passwordRegister" placeholder="Enter password" />
+                    <button id="register" onClick={this.register}>Register</button>
+                </form>
+            </div>
+        )
+    }
+});
 
-                    <form className="continue-form">
-                        <input id="gameSession" placeholder="Enter Game Name" />
-                        <button id="enterGame" onClick={this.enterGame}>Enter</button>
-                    </form>
-                </div>
-            )
-        }
-    });
-
-    module.exports = LoginForm;
+module.exports = LoginForm;

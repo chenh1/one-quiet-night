@@ -10,11 +10,17 @@ app.use('/', express.static(path.join(__dirname, '.')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//var login = require('./routes/login');
+//app.use('/login', login);
+
+var register = require('./routes/register');
+app.use('/register', register);
+
+var login = require('./routes/login');
+app.use('/login', login);
+
 var session = require('./routes/session');
 app.use('/setSession', session);
-
-var test = require('./routes/test');
-app.use('/test', test);
 
 app.listen(app.get('port'), function() {
     console.log('Server started: http://localhost:' + app.get('port') + '/');

@@ -5,10 +5,18 @@ var Cures = require('./boardComponents/cures');
 var PlayerDeck = require('./boardComponents/playerDeck');
 var Infections = require('./boardComponents/infections');
 var LoginForm = require('./boardComponents/loginForm');
+var StartGameForm = require('./boardComponents/startGameForm');
 
 var GameBoardInitialize = React.createClass({
 
     sessionStarted: false,
+
+    changeSessionState: function() {
+        //Need to set state this to true so it saves on refresh
+        this.sessionStarted = true;
+
+        this.componentDidMount();
+    },
 
     getInitialState: function(){
         return {data:[]};
@@ -42,8 +50,6 @@ var GameBoardInitialize = React.createClass({
     },
 
     render: function(){
-                    console.log(this.props);
-                    console.log(this.sessionStarted);
         return(
             <div className='game-board'>
                 <WorldMap />
@@ -51,7 +57,8 @@ var GameBoardInitialize = React.createClass({
                 <Cures />
                 <PlayerDeck />
                 <Infections />
-                <LoginForm sessionStarted={this.sessionStarted}/>
+                <LoginForm changeSessionState={this.changeSessionState} />
+                <StartGameForm sessionStarted={this.sessionStarted}/>
             </div>
         )
     }
