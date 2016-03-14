@@ -20,7 +20,7 @@ var LoginForm = React.createClass({
             success: function(data){
                 if(data == '"granted"') {
                     console.log(changeSessionState);
-                    changeSessionState();
+                    changeSessionState(loginInfo.usernameOrEmail);
                 }
             },
             error: function(){

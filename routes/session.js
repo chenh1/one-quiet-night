@@ -29,9 +29,17 @@ router.route('/')
         //req.body contains the data sent from the ajax call
         console.log(req.body.data);
 
-        var session_password = req.body.data,
+        var session_password = req.body.newGameName,
+            players = req.body.players,
+            player_ids = [],
             player_cards,
             infection_cards;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+        //*******TODO: loop through player table to search. If any failure, immediately return********//
+        ////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //Populate player_ids all successful searches
 
         connection.query('SELECT `session_password` FROM `game_session` WHERE `session_password` = "'+session_password+'"', function(err, results) {
             if (err) throw err
@@ -51,7 +59,12 @@ router.route('/')
                     if (err) throw err
 
                     session_id = results[0].id;
-                    console.log(session_id);
+
+                    for(var i = 0, playersLength = players_ids.length; i < playersLength; i++){
+                        connection.query('INSERT INTO `user_session` (game_id, user_id, player_number) VALUES ("'+session_id+'", "'+players_ids[i]+'", "'+i+'")', function(err, results) {
+                            if (err) throw err
+                        });
+                    }
 
                     //Get all cards to populate card session
                     connection.query('SELECT * FROM `player_cards` WHERE 1', function(err, results) {

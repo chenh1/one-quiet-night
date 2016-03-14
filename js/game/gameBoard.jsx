@@ -9,11 +9,15 @@ var StartGameForm = require('./boardComponents/startGameForm');
 
 var GameBoardInitialize = React.createClass({
 
+    player: '',
+
     sessionStarted: false,
 
-    changeSessionState: function() {
+    changeSessionState: function(usernameOrEmail) {
         //Need to set state this to true so it saves on refresh
         this.sessionStarted = true;
+
+        this.player = usernameOrEmail;
 
         this.componentDidMount();
     },
@@ -58,7 +62,7 @@ var GameBoardInitialize = React.createClass({
                 <PlayerDeck />
                 <Infections />
                 <LoginForm changeSessionState={this.changeSessionState} />
-                <StartGameForm sessionStarted={this.sessionStarted}/>
+                <StartGameForm player={this.player} />
             </div>
         )
     }

@@ -30,12 +30,21 @@ var React = require('react');
         startGame: function(e){
             e.preventDefault();
 
-            var newGameName = {'data': $("#newGameName").val()};
+            var gameData = {
+                'newGameName': $("#newGameName").val(),
+                'players': []
+            };
+
+            $(".invite-player-input").each(function(){
+                gameData.players.push($(this).val());
+            });
+
+            gameData.players.push(this.props.player);
 
             $.ajax({
                 url: '/setSession',
                 dataType: 'json',
-                data: newGameName,
+                data: gameData,
                 type: 'post',
                 cache: false,
                 success: function(data){
